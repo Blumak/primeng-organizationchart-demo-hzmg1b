@@ -1,0 +1,97 @@
+<p-toast [style]="{ marginTop: '80px' }"></p-toast>
+
+<h5>Advanced</h5>
+<p>Organization with advanced customization.</p>
+<p-organizationChart
+  [value]="data4"
+  [(selection)]="selectedNode"
+  styleClass="company"
+>
+  <ng-template let-node pTemplate="parking">
+    <div class="node-delete" (click)="deleteNode(node)">X</div>
+    <div class="node-header">{{ node.label }}</div>
+    <div class="node-content">
+      <div>{{ node.data.maxLimit }}</div>
+      <div class="add-chi0ld" (click)="addChild(node)">+</div>
+    </div>
+  </ng-template>
+  <ng-template let-node pTemplate="room">
+    <div class="node-delete" (click)="deleteNode(node)">X</div>
+    <div class="node-header">{{ node.label }}</div>
+    <div class="node-content">
+      <div>{{ node.data?.maxLimit }}</div>
+    </div>
+  </ng-template>
+  <ng-template let-node pTemplate="charger">
+    <div class="charger" *ngFor="let charger of node.data.chargers">
+      <div class="charger-body">
+        <div class="node-delete" (click)="deleteNode(node)">X</div>
+        <div class="node-header">{{ charger.label }}</div>
+        <div class="node-content">
+          <div>{{ charger.maxLimit }}</div>
+        </div>
+      </div>
+      <div class="chargers">
+        <div class="circle" *ngIf="charger.numOfConnectors > 0"></div>
+        <div class="circle" *ngIf="charger.numOfConnectors > 1"></div>
+      </div>
+    </div>
+  </ng-template>
+</p-organizationChart>
+
+<h5>Tets 1</h5>
+<p>Tets 1</p>
+<p-organizationChart
+  [value]="data3"
+  [(selection)]="selectedNode"
+  styleClass="company"
+>
+  <ng-template let-node pTemplate="parking">
+    <div class="node-delete" (click)="deleteNode(node)">X</div>
+    <div class="node-header">{{ node.label }}</div>
+    <div class="node-content">
+      <div>{{ node.data.maxLimit }}</div>
+      <div class="add-child" (click)="addChild(node)">+</div>
+    </div>
+  </ng-template>
+  <ng-template let-node pTemplate="room">
+    <div class="node-delete" (click)="deleteNode(node)">X</div>
+    <div class="node-header">{{ node.label }}</div>
+    <div class="node-content">
+      <div>{{ node.data?.maxLimit }}</div>
+    </div>
+  </ng-template>
+  <ng-template let-node pTemplate="charger">
+    <div class="node-delete" (click)="deleteNode(node)">X</div>
+    <div class="node-header">{{ node.label }}</div>
+    <div class="node-content">
+      <div>{{ node.data.maxLimit }}</div>
+    </div>
+    <div class="node-footer">
+      <div class="circle"></div>
+      <div class="circle" *ngIf="node.data.numOfConnectors > 1"></div>
+    </div>
+  </ng-template>
+</p-organizationChart>
+
+<!-- <p-organizationChart
+  [value]="data1"
+  selectionMode="single"
+  [(selection)]="selectedNode"
+  (onNodeSelect)="onNodeSelect($event)"
+  styleClass="company"
+>
+  <ng-template let-node pTemplate="person">
+    <div class="node-header">{{ node.label }}</div>
+    <div class="node-content">
+      <div>{{ node.data.name }}</div>
+    </div>
+  </ng-template>
+  <ng-template let-node pTemplate="department">
+    {{ node.label }}
+  </ng-template>
+</p-organizationChart>
+
+<h5>Basic</h5>
+<p>Hierarchical data with zero configuration.</p>
+<p-organizationChart [value]="data2"></p-organizationChart> -->
